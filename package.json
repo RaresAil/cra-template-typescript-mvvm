@@ -1,0 +1,23 @@
+{
+  "name": "cra-template-typescript-mvvm",
+  "version": "1.0.0",
+  "keywords": [],
+  "description": "The MVVM TypeScript template for Create React App",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaresAil/cra-template-typescript-mvvm.git"
+  },
+  "author": "Nicolae-Rares Ailincai",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "bugs": {
+    "url": "https://github.com/RaresAil/cra-template-typescript-mvvm/issues"
+  },
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "homepage": "https://github.com/RaresAil/cra-template-typescript-mvvm#readme"
+}
