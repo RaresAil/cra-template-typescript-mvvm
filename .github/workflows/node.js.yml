@@ -20,7 +20,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install -g yarn
-      - run: yarn create react-app . --template typescript-mvvm
-      - run: yarn lint
-      - run: yarn test:ci
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Create React App using the Template
+        run: yarn create react-app test --template typescript-mvvm
+      - name: Lint
+        working-directory: ./test
+        run: yarn lint
+      - name: Test
+        working-directory: ./test
+        run: yarn test:ci
