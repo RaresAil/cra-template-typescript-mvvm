@@ -1,0 +1,8 @@
+.header {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+  background: #3498db;
+  color: #ecf0f1;
+  font-size: 18px;
+}

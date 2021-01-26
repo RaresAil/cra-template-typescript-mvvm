@@ -1,18 +1,38 @@
 {
   "package": {
     "dependencies": {
+      "@testing-library/user-event": "^12.1.10",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
-      "@testing-library/user-event": "^12.1.10",
-      "@types/node": "^12.0.0",
-      "@types/react": "^17.0.0",
+      "eslint-plugin-security": "^1.4.0",
       "@types/react-dom": "^17.0.0",
+      "@types/react": "^17.0.0",
       "@types/jest": "^26.0.15",
+      "@types/node": "^12.0.0",
       "typescript": "^4.1.2",
-      "web-vitals": "^1.0.1"
+      "web-vitals": "^1.0.1",
+      "mobx-react": "^7.0.6",
+      "mobx": "^6.0.5"
     },
     "eslintConfig": {
-      "extends": ["react-app", "react-app/jest"]
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:security/recommended",
+        "eslint:recommended",
+        "react-app/jest",
+        "react-app"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint", "security"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "semi": "error"
+      }
+    },
+    "scripts": {
+      "test:ci": "CI=true yarn run test --env=jsdom",
+      "lint": "eslint \"src/**/*.{ts,tsx}\""
     }
   }
 }

@@ -1,12 +1,23 @@
-import React from 'react';
+import { Provider } from 'mobx-react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react';
+
 import reportWebVitals from './reportWebVitals';
+import { Header, Home } from './app/providers';
+import Models from './app/models';
+import './index.css';
+
+const models = new Models();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider {...models.getStores()}>
+      {/**
+       * All of the components must be inside Provider
+       */}
+      <Header />
+      <Home />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

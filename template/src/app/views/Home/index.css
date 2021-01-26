@@ -1,0 +1,17 @@
+.home-page {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.home-page .content .user-add {
+  margin-bottom: 20px;
+}
+
+.home-page .content .user-line {
+  margin-bottom: 5px;
+}
+
+.home-page .content button {
+  margin-left: 10px;
+}
