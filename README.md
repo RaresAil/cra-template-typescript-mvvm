@@ -1,4 +1,8 @@
-# cra-template-typescript
+# React TypeScript MVVM
+
+![Build & Testing](https://github.com/RaresAil/cra-template-typescript-mvvm/workflows/Build%20&%20Testing/badge.svg)
+![OSSAR](https://github.com/RaresAil/cra-template-typescript-mvvm/workflows/OSSAR/badge.svg)
+![CodeQL](https://github.com/RaresAil/cra-template-typescript-mvvm/workflows/CodeQL/badge.svg)
 
 This is the MVVM TypeScript template for [Create React App](https://github.com/facebook/create-react-app).
 
