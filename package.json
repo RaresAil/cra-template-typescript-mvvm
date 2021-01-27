@@ -1,6 +1,6 @@
 {
   "name": "cra-template-typescript-mvvm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [],
   "description": "The MVVM TypeScript template for Create React App",
   "repository": {
