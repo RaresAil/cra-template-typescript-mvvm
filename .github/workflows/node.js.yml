@@ -24,9 +24,9 @@ jobs:
         run: npm install -g yarn
       - name: Create React App using the Template
         run: yarn create react-app test --template typescript-mvvm
-      - name: Lint
+      - name: Analyse the code with ESLint
         working-directory: ./test
         run: yarn lint
-      - name: Test
+      - name: Running the tests
         working-directory: ./test
         run: yarn test:ci
