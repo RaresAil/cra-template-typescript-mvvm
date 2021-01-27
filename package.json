@@ -1,7 +1,18 @@
 {
   "name": "cra-template-typescript-mvvm",
-  "version": "1.0.1",
-  "keywords": [],
+  "version": "1.0.2",
+  "keywords": [
+    "mvvm-architecture",
+    "react-template",
+    "mvvm-pattern",
+    "mobx-react",
+    "typescript",
+    "template",
+    "reactjs",
+    "react",
+    "mobx",
+    "mvvm"
+  ],
   "description": "The MVVM TypeScript template for Create React App",
   "repository": {
     "type": "git",
