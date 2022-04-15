@@ -1,5 +1,5 @@
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'mobx-react';
-import ReactDOM from 'react-dom';
 import React from 'react';
 
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +9,11 @@ import './index.css';
 
 const models = new Models();
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+
+root.render(
   <React.StrictMode>
     <Provider {...models.getStores()}>
       {/**
@@ -18,8 +22,7 @@ ReactDOM.render(
       <Header />
       <Home />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,4 +1,4 @@
-import { render, fireEvent, screen, getByRole } from '@testing-library/react';
+import { render, fireEvent, screen, within } from '@testing-library/react';
 
 import Home from '../Home';
 import { createProvider } from '../../../test-utils';
@@ -14,15 +14,18 @@ describe('Home Provider', () => {
   const defaultUserName = 'Chardonnay Kendall';
   let items: UIItems;
 
-  beforeEach(() => {
-    const { getByTestId } = screen;
+  const setup = () => {
     render(createProvider(Home));
     items = {
-      addAsyncButton: getByTestId('button.addAsync'),
-      addButton: getByTestId('button.add'),
-      input: getByTestId('input.addInput'),
-      userList: getByTestId('list.users')
+      addAsyncButton: screen.getByTestId('button.addAsync'),
+      addButton: screen.getByTestId('button.add'),
+      input: screen.getByTestId('input.addInput'),
+      userList: screen.getByTestId('list.users')
     };
+  };
+
+  beforeEach(() => {
+    setup();
   });
 
   test('Expect to have the form elements in document', () => {
@@ -73,7 +76,8 @@ describe('Home Provider', () => {
 
     const defaultUser = screen.getByTestId(`list.users[${defaultUserName}]`);
     expect(defaultUser).toBeInTheDocument();
-    const defaultUserRemoveButton = getByRole(defaultUser, 'button');
+
+    const defaultUserRemoveButton = within(defaultUser).getByRole('button');
     fireEvent.click(defaultUserRemoveButton);
 
     expect(userList.childNodes).toHaveLength(1);
