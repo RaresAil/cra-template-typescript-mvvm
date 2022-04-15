@@ -1,6 +1,6 @@
 {
   "name": "cra-template-typescript-mvvm",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "keywords": [
     "mvvm-architecture",
     "react-template",
@@ -21,7 +21,7 @@
   "author": "Nicolae-Rares Ailincai",
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "bugs": {
     "url": "https://github.com/RaresAil/cra-template-typescript-mvvm/issues"

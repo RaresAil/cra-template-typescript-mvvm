@@ -1,9 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 
 import { createProvider } from '../../../test-utils';
+import HomeViewModel from '../../view-models/Home';
 import Models from '../../models';
 import Header from '../Header';
-import HomeViewModel from '../../view-models/Home';
 
 interface UIItems {
   header: HTMLElement;
@@ -18,13 +18,16 @@ const homeViewModel = new HomeViewModel(
 describe('Home Provider', () => {
   let items: UIItems;
 
-  beforeEach(() => {
-    const { getByTestId } = screen;
+  const setup = () => {
     render(createProvider(Header, models));
 
     items = {
-      header: getByTestId('header')
+      header: screen.getByTestId('header')
     };
+  };
+
+  beforeEach(() => {
+    setup();
   });
 
   test('Expect to have the header', () => {
@@ -35,18 +38,21 @@ describe('Home Provider', () => {
     expect(numberOfUsers).toBe('1');
   });
 
-  test('Add new user and expect to have 2 users', () => {
+  test('Add new user and expect to have 2 users', async () => {
     const { header } = items;
 
     let numberOfUsers = header.getAttribute('data-testvalue');
     expect(numberOfUsers).toBe('1');
 
-    homeViewModel.addUser('Alex');
+    await act(async () => {
+      homeViewModel.addUser('Alex');
+    });
+
     numberOfUsers = header.getAttribute('data-testvalue');
     expect(numberOfUsers).toBe('2');
   });
 
-  test('Remove the created user and expect to have 1 user', () => {
+  test('Remove the created user and expect to have 1 user', async () => {
     const { header } = items;
 
     let numberOfUsers = header.getAttribute('data-testvalue');
@@ -56,27 +62,34 @@ describe('Home Provider', () => {
       homeViewModel.userList.findIndex((name) => name === 'Alex') >= 0;
     expect(hasUser).toBe(true);
 
-    homeViewModel.removeUser('Alex');
+    await act(async () => {
+      homeViewModel.removeUser('Alex');
+    });
+
     numberOfUsers = header.getAttribute('data-testvalue');
     expect(numberOfUsers).toBe('1');
   });
 
-  test('Add 5 users and delete all users and expect to have 0 users', () => {
+  test('Add 5 users and delete all users and expect to have 0 users', async () => {
     const { header } = items;
 
     let numberOfUsers = header.getAttribute('data-testvalue');
     expect(numberOfUsers).toBe('1');
 
-    homeViewModel.addUser('1');
-    homeViewModel.addUser('2');
-    homeViewModel.addUser('3');
-    homeViewModel.addUser('4');
-    homeViewModel.addUser('5');
+    await act(async () => {
+      homeViewModel.addUser('1');
+      homeViewModel.addUser('2');
+      homeViewModel.addUser('3');
+      homeViewModel.addUser('4');
+      homeViewModel.addUser('5');
+    });
 
     numberOfUsers = header.getAttribute('data-testvalue');
     expect(numberOfUsers).toBe('6');
 
-    homeViewModel.removeAllUsers();
+    await act(async () => {
+      homeViewModel.removeAllUsers();
+    });
 
     numberOfUsers = header.getAttribute('data-testvalue');
     expect(numberOfUsers).toBe('0');
